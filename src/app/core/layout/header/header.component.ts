@@ -9,15 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [RouterLink, MatToolbarModule, MatButtonModule],
   template: `
     <mat-toolbar color="primary">
-      <span>Form Builder</span>
-      <span class="spacer"></span>
-      <a mat-button routerLink="/login">Login</a>
-      <a mat-button routerLink="/register">Register</a>
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col">
+            <span>Form Builder</span>
+          </div>
+          <div class="col-auto">
+            <a mat-button routerLink="/login">Login</a>
+            <a mat-button routerLink="/register">Register</a>
+          </div>
+        </div>
+      </div>
     </mat-toolbar>
   `,
   styles: [`
-    .spacer {
-      flex: 1 1 auto;
+    mat-toolbar {
+      margin-bottom: 2rem;
     }
   `]
 })
