@@ -50,6 +50,9 @@ import { RouterLink } from '@angular/router';
     mat-card-header {
       margin-bottom: 1rem;
     }
+    mat-card-actions {
+      justify-content: space-around;
+    }
   `]
 })
 export class ForgotPasswordComponent {

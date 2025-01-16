@@ -53,11 +53,14 @@ import { RouterLink } from '@angular/router';
     </div>
   `,
   styles: [`
-    mat-card {
+    ::ng-deep mat-card {
       margin-bottom: 2rem;
     }
     mat-card-header {
       margin-bottom: 1rem;
+    }
+    ::ng-deep mat-card-actions {
+      justify-content: space-around;
     }
   `]
 })
