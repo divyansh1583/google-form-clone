@@ -4,18 +4,15 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
-  imports: [HeaderComponent,RouterOutlet],
+  imports: [HeaderComponent, RouterOutlet],
   template: `
+  <header>
     <app-header></app-header>
-    <main class="container-fluid">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-    </main>
-  `,
-  styles: ``
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  `
 })
 export class AuthComponent {
 

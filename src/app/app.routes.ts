@@ -9,8 +9,8 @@ import { FormComponent } from './features/form/form.component';
 
 export const routes: Routes = [
     {
-        path: '', 
-        component: AuthComponent, 
+        path: '',
+        component: AuthComponent,
         children: [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
@@ -18,8 +18,12 @@ export const routes: Routes = [
         ]
     },
     { path: 'dashboard', component: DashboardComponent },
-    {path: 'forms', component: FormComponent,children: [
-        { path: 'edit/:id', component: FormCreationComponent },
-    ]},
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    {
+        path: 'forms',
+        component: FormComponent,
+        children: [
+            { path: 'edit/:id', component: FormCreationComponent },
+        ]
+    },
+    { path: '', redirectTo: '/forms/edit/0', pathMatch: 'full' },
 ];
