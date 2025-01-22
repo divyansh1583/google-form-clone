@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-form-creation',
   imports: [MatToolbarModule, MatTabsModule, MatIconModule, MatButtonModule],
@@ -19,11 +19,33 @@ import {MatButtonModule} from '@angular/material/button';
               </svg>
               <span class="ms-2">Untitled Form</span>
               <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-              <mat-icon>folder</mat-icon>
+              <mat-icon class="material-icons-outlined">folder</mat-icon>
             </button>
               <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-              <mat-icon>star</mat-icon>
+              <mat-icon class="material-icons-outlined">star_outlined</mat-icon>
             </button>
+            <span class="example-spacer"></span>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon class="material-icons-outlined">palette</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon class="material-icons-outlined">visibility</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon class="material-icons-outlined">undo</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <span class="material-icons-outlined">redo</span>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <span class="material-icons-outlined">link</span>
+            </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <span class="material-icons-outlined">person_add</span>
+            </button>
+              <button mat-flat-button class="example-icon" aria-label="Example icon-button with menu icon">
+                Publish
+              </button>
             </mat-toolbar>
           <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
             <mat-tab label="Questions"> Content 1 </mat-tab>
@@ -32,18 +54,11 @@ import {MatButtonModule} from '@angular/material/button';
           </mat-tab-group>
   `,
   styles: `
-  @use '@angular/material' as mat;
-
-// Customize the entire app. Change :root to your selector if you want to scope the styles.
-:host {
-  @include mat.tabs-overrides((
-    background-color:--mat-sys-surface,
-    active-indicator-shape:rounded // can be 'circle', 'rounded', 'square'
-  ));
-  @include mat.toolbar-overrides((
-    container-background-color:--mat-sys-surface
-  ));
+.example-spacer {
+  flex: 1 1 auto;
 }
+
+
   `
 })
 export class FormCreationComponent {

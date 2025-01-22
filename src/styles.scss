@@ -33,11 +33,16 @@ html {
   color-scheme: dark;
 }
 
-app-root {
-  display: block;
-  height: 100%;
-}
 
-* {
-  font-family: 'Google Sans Text', sans-serif;
-}
+    @include mat.tabs-overrides(
+      (
+        active-indicator-shape: 3px 3px 0 0,
+        active-indicator-height: 3px,
+      )
+    );
+    @include mat.icon-overrides(
+      (
+        
+      )
+    );
+
