@@ -50,8 +50,7 @@ import {MatCardModule} from '@angular/material/card';
             </mat-toolbar>
           <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
             <mat-tab label="Questions"> 
-            <div class="flex items-center w-full justify-center">
-              <mat-card appearance="outlined" class="w-3/5 my-2">
+              <mat-card appearance="outlined">
                 <mat-card-header>
                   <mat-card-title> Australian Shepherd</mat-card-title>
                   <mat-card-subtitle>Herding group</mat-card-subtitle>
@@ -60,8 +59,6 @@ import {MatCardModule} from '@angular/material/card';
                   <button mat-button>Learn More</button>
                 </mat-card-actions>
               </mat-card>
-
-              </div> 
             </mat-tab>
             <mat-tab label="Responses"> Content 2 </mat-tab>
             <mat-tab label="Settings"> Content 3 </mat-tab>
