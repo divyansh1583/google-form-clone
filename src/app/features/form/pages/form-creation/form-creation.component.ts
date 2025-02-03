@@ -50,15 +50,18 @@ import {MatCardModule} from '@angular/material/card';
             </mat-toolbar>
           <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
             <mat-tab label="Questions"> 
-              <mat-card appearance="outlined">
-                <mat-card-header>
-                  <mat-card-title> Australian Shepherd</mat-card-title>
-                  <mat-card-subtitle>Herding group</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-actions>
-                  <button mat-button>Learn More</button>
-                </mat-card-actions>
-              </mat-card>
+              <div class="card-container">
+
+                <mat-card appearance="outlined">
+                  <mat-card-header>
+                    <mat-card-title> Australian Shepherd</mat-card-title>
+                    <mat-card-subtitle>Herding group</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-actions>
+                    <button mat-button>Learn More</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
             </mat-tab>
             <mat-tab label="Responses"> Content 2 </mat-tab>
             <mat-tab label="Settings"> Content 3 </mat-tab>
@@ -73,6 +76,26 @@ import {MatCardModule} from '@angular/material/card';
 .mat-toolbar{
   @include mat.toolbar-overrides((
     container-background-color: white,
+  ));
+}
+.card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ::ng-deep .mat-mdc-card.mdc-card.mat-mdc-card-outlined.mdc-card--outlined{
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+    border: 1px solid rgb(218, 220, 224);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    position: relative;
+  }
+  @include mat.card-overrides((
+    subtitle-text-color: orange,
+    elevated-container-color: red,
+    
   ));
 }
 
