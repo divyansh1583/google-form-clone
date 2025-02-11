@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
     <p>
       questions works!
     </p>
-  `,
-  styles: ``
+  `
 })
 export class QuestionsComponent {
 

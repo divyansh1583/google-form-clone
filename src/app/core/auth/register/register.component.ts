@@ -91,7 +91,7 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       // TODO: Implement registration logic
-      console.log(this.registerForm.value);
+      // console.log(this.registerForm.value);
     }
   }
 }

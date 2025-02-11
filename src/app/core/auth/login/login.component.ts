@@ -1,15 +1,30 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardModule,
+} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { RouterLink } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, RouterLink],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    CommonModule
+  ],
   template: `
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-md-4">
@@ -52,32 +67,20 @@ import { RouterLink } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
-    ::ng-deep mat-card {
-      margin-bottom: 2rem;
-    }
-    mat-card-header {
-      margin-bottom: 1rem;
-    }
-    ::ng-deep mat-card-actions {
-      justify-content: space-around;
-    }
-  `]
+  styles: []
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+  });
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      // TODO: Implement login logic
-      console.log(this.loginForm.value);
+    if (this.form.valid) {
+      console.log(this.form.value);
     }
   }
 }

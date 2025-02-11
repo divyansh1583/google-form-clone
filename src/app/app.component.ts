@@ -4,9 +4,14 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,MatSidenavModule],
   template: `
-          <router-outlet></router-outlet>
+  <mat-sidenav-container>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
   `,
   styles: [`
 

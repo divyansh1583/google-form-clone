@@ -11,5 +11,7 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class SettingsComponent {
-
+ngOnInit(): void {
+  // console.log('settings component initialized');
+}
 }

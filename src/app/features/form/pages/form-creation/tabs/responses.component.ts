@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
     <p>
       responses works!
     </p>
-  `,
-  styles: ``
+  `
 })
 export class ResponsesComponent {
 

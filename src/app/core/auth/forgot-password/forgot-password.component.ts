@@ -67,7 +67,7 @@ export class ForgotPasswordComponent {
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
       // TODO: Implement password reset logic
-      console.log(this.forgotPasswordForm.value);
+      // console.log(this.forgotPasswordForm.value);
     }
   }
 }

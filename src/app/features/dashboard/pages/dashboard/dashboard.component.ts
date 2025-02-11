@@ -50,11 +50,6 @@ export interface Form {
       margin-bottom: 20px;
       cursor: pointer;
     }
-    img {
-
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    }
     `],
   imports: [MatCardModule,RouterModule,CommonModule,MatButtonModule]
 })
