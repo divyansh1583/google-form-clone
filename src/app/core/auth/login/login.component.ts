@@ -11,8 +11,8 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, RouterLink],
   template: `
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-4">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Login</mat-card-title>
