@@ -1,33 +1,18 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  MatCard,
-  MatCardActions,
-  MatCardContent,
-  MatCardModule,
-} from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    CommonModule
-  ],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule, RouterLink],
   template: `
-    <div class="row justify-content-center align-items-center h-100">
-      <div class="col-md-4">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
         <mat-card>
           <mat-card-header>
             <mat-card-title>Login</mat-card-title>
@@ -67,20 +52,32 @@ import { MatIconModule } from '@angular/material/icon';
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    ::ng-deep mat-card {
+      margin-bottom: 2rem;
+    }
+    mat-card-header {
+      margin-bottom: 1rem;
+    }
+    ::ng-deep mat-card-actions {
+      justify-content: space-around;
+    }
+  `]
 })
 export class LoginComponent {
-  form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
-  });
+  loginForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
   onSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value);
+    if (this.loginForm.valid) {
+      // TODO: Implement login logic
+      console.log(this.loginForm.value);
     }
   }
 }
