@@ -6,7 +6,10 @@
 html, body {
 height: 100%;
 }
-
+body{
+  margin: 0;
+  font-family: 'Google Sans Text', sans-serif;
+}
 /* Theme configuration */
 html {
   color-scheme: light;
