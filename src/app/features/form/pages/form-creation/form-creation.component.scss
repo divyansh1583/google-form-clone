@@ -1,13 +1,17 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 :host {
-  @include mat.card-overrides((
-    subtitle-text-color: black,
-    elevated-container-color: white,
-  ));
-  @include mat.tabs-overrides((
-    background-color: purple,
-  ));
+  @include mat.card-overrides(
+    (
+      subtitle-text-color: black,
+      elevated-container-color: white,
+    )
+  );
+  @include mat.tabs-overrides(
+    (
+      background-color: purple,
+    )
+  );
   display: block;
   height: calc(100vh - 64px); // Subtract header height
 }
@@ -18,16 +22,18 @@
   overflow-x: auto;
   height: 100%;
 }
-
+mat-card {
+  border-top: 10px solid rgb(103, 58, 183);
+}
 ::ng-deep {
   .mat-mdc-tab-group {
     height: 100%;
   }
-  
+
   .mat-mdc-tab-body-wrapper {
     height: 100%;
   }
-  
+
   mat-tab-body {
     background-color: var(--mat-sys-primary-container);
   }
