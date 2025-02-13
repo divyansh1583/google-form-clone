@@ -5,8 +5,8 @@ import { HeaderComponent } from './components/header/header.component';
 @Component({
   imports: [RouterModule, HeaderComponent],
   template: `
-  <app-form-header></app-form-header>
-<router-outlet></router-outlet>
+    <app-form-header></app-form-header>
+    <router-outlet></router-outlet>
   `,
   styles: ``
 })
