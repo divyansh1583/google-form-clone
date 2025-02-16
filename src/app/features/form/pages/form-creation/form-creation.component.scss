@@ -1,6 +1,8 @@
 @use "@angular/material" as mat;
 
 :host {
+  display: block;
+  height: calc(100vh - 64px); 
   @include mat.card-overrides(
     (
       subtitle-text-color: black,
@@ -12,31 +14,80 @@
       background-color: purple,
     )
   );
-  display: block;
-  height: calc(100vh - 64px); // Subtract header height
 }
-
+.form-title-card {
+  @include mat.form-field-overrides((
+    filled-container-color:none,
+    filled-hover-active-indicator-color:none,
+    outlined-hover-outline-color:none
+  ));
+}
 .form-container {
-  width: 770px;
-  margin: auto;
-  overflow-x: auto;
-  height: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
 }
+
+.form-title-card {
+  border-top: 10px solid #673ab7;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.question-card {
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
 mat-card {
-  border-top: 10px solid rgb(103, 58, 183);
+  margin-bottom: 16px;
 }
+
+.question-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  mat-form-field:first-child {
+    flex: 1;
+  }
+}
+
+.options-container {
+  margin: 16px 0;
+  
+  .option-item {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.question-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 8px;
+  margin-top: 16px;
+  gap: 8px;
+}
+
 ::ng-deep {
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+  
   .mat-mdc-tab-group {
-    height: 100%;
+    margin: 16px;
   }
+}
 
-  .mat-mdc-tab-body-wrapper {
-    height: 100%;
-  }
-
-  mat-tab-body {
-    background-color: var(--mat-sys-primary-container);
-  }
+.responses-container,
+.settings-container {
+  padding: 24px;
+  text-align: center;
+  color: #666;
 }
 
 @media (max-width: 771px) {
@@ -44,4 +95,50 @@ mat-card {
     width: 100%;
     min-width: inherit;
   }
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;             /* Consistent padding */
+  background-color: white;    /* White background for the input area */
+  border-radius: 4px;        /* Material Design rounded corners */
+  margin-right: 24px;        /* Spacing from right edge */
+}
+
+.title-area {
+  padding-bottom: 16px;      /* Spacing between title and toolbar */
+}
+
+.form-title {
+  color: rgba(0, 0, 0, 0.6); /* Example muted title color */
+  padding-bottom: 4px;      /* Slight spacing below "Form title" label */
+}
+
+.editable-title {
+  padding: 8px 12px;         /* Padding inside editable area */
+  font-size: 1.25rem;        /* Example title font size (adjust as needed) */
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12); /* Subtle underline */
+  outline: none;             /* Remove default focus outline */
+}
+
+.formatting-toolbar {
+  background: transparent;   /* Ensure toolbar is transparent */
+}
+
+.formatting-toolbar mat-toolbar-row {
+  padding: 0;                /* Remove padding from toolbar row */
+}
+
+.formatting-toolbar button {
+  margin-right: 8px;         /* Spacing between buttons */
+}
+
+/* Global body styles (consider moving to a global stylesheet) */
+body {
+  background-color: #f0ebf8; /* Background color */
+  font-family: Roboto, Arial, sans-serif; /* Material Design font stack */
+  margin: 0;
+  height: 100%;
 }

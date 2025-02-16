@@ -1,0 +1,103 @@
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 12px;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 24px;
+
+  &.description-input {
+    padding: 0 24px 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
+
+.title-area {
+  padding-bottom: 8px;
+}
+
+.form-title {
+  color: rgba(0, 0, 0, 0.6);
+  padding-bottom: 4px;
+}
+
+.title-form-field {
+  width: 100%;
+
+  ::ng-deep {
+    .mat-mdc-form-field-flex {
+      padding-top: 0;
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 8px 0;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .mat-mdc-form-field-underline {
+      display: none;
+    }
+
+    input.mat-mdc-input-element {
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+
+    textarea.mat-mdc-input-element {
+      font-size: 1rem;
+      line-height: 1.5;
+      resize: none;
+    }
+
+    // Remove hover effects
+    .mdc-text-field--filled:not(.mdc-text-field--disabled):hover .mdc-line-ripple::before {
+      border-bottom-color: transparent;
+    }
+
+    .mdc-text-field:hover .mdc-line-ripple::before {
+      border-bottom-color: transparent;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    // Remove focus color changes
+    .mdc-line-ripple::after {
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.formatting-toolbar {
+  background: transparent;
+  margin: 0 -12px;
+}
+
+.formatting-toolbar mat-toolbar-row {
+  padding: 0;
+  height: 40px;
+  min-height: 40px;
+}
+
+.formatting-toolbar button {
+  margin-right: 4px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+} 

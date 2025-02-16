@@ -25,6 +25,6 @@ export const routes: Routes = [
             { path: 'edit/:id', component: FormCreationComponent },
         ]
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/forms/edit/0', pathMatch: 'full' },
     { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];

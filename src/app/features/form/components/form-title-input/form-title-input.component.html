@@ -1,0 +1,52 @@
+<!-- Form Input Container -->
+<div class="form-input-container" [class.description-input]="isDescription">
+  <div class="title-area">
+    <mat-form-field appearance="fill" class="title-form-field">
+      @if (!isDescription) {
+        <input matInput
+               [(ngModel)]="value"
+               (focus)="onFocus()"
+               (blur)="onBlur()"
+               [placeholder]="placeholder">
+      }
+      @if (isDescription) {
+        <textarea matInput
+                  [(ngModel)]="value"
+                  (focus)="onFocus()"
+                  (blur)="onBlur()"
+                  [placeholder]="placeholder"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"></textarea>
+      }
+    </mat-form-field>
+  </div>
+
+  @if (isToolbarVisible) {
+    <mat-toolbar color="transparent" class="formatting-toolbar">
+      <mat-toolbar-row>
+        <button mat-icon-button aria-label="Bold">
+          <mat-icon>format_bold</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Italic">
+          <mat-icon>format_italic</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Underline">
+          <mat-icon>format_underlined</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Insert Link">
+          <mat-icon>link</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Bullet List">
+          <mat-icon>format_list_bulleted</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Numbered List">
+          <mat-icon>format_list_numbered</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Clear Formatting">
+          <mat-icon>format_clear</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  }
+</div> 
