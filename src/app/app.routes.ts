@@ -6,25 +6,31 @@ import { RegisterComponent } from './core/auth/register/register.component';
 import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboard.component';
 import { FormComponent } from './features/form/form.component';
 import { FormCreationComponent } from './features/form/pages/form-creation/form-creation.component';
+import { authGuard } from './core/auth/guards/auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
         component: AuthComponent,
         children: [
+            {path: '', redirectTo: 'login', pathMatch: 'full' },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
         ]
     },
-    { path: 'dashboard', component: DashboardComponent },
+    { 
+        path: 'dashboard', 
+        loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        canActivate: [authGuard]
+    },
     {
         path: 'forms', 
-        component: FormComponent, 
+        component: FormComponent,
+        canActivate: [authGuard], 
         children: [
             { path: 'edit/:id', component: FormCreationComponent },
         ]
     },
-    { path: '', redirectTo: '/forms/edit/0', pathMatch: 'full' },
     { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];

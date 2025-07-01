@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import {
   FormBuilder,
   FormGroup,
@@ -11,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +28,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  private auth = inject(Auth);
+  private authService = inject(AuthService);
   private router = inject(Router);
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group(
@@ -48,20 +48,16 @@ export class RegisterComponent {
       : { mismatch: true };
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.registerForm.valid) {
-      var email = this.registerForm.get('email')?.value;
-      var password = this.registerForm.get('password')?.value;
-      createUserWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user.toJSON());
-          this.router.navigate(['/login']); 
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-        });
+      try {
+        const email = this.registerForm.get('email')?.value;
+        const password = this.registerForm.get('password')?.value;
+        await this.authService.signUp(email, password);
+        this.router.navigate(['/login']);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }

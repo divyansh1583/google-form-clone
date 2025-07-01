@@ -10,9 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterLink } from '@angular/router';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { error } from 'console';
-
+import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -28,29 +27,29 @@ import { error } from 'console';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  private auth = inject(Auth);
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
   private router = inject(Router);
-  constructor(private fb: FormBuilder) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
-  }
+  private _snackBar = inject(MatSnackBar);
 
-  onSubmit() {
+  loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
+
+  async onLogin() {
     if (this.loginForm.valid) {
-      var email = this.loginForm.get('email')?.value;
-      var password = this.loginForm.get('password')?.value;
-      signInWithEmailAndPassword(this.auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          this.router.navigate(['/dashboard']);
-          console.log(user.toJSON());
-        })
-        .catch((error) => {
-          console.log(error);
+      try {
+        const { email, password } = this.loginForm.value;
+        await this.authService.signIn(email, password);
+        this.router.navigate(['/dashboard']);
+      } catch (error: any) {
+        console.error('Login error:', error);
+        this._snackBar.open('Login failed. Please check your credentials.', 'Close', {
+          duration: 3000,
+          panelClass: ['error-snackbar'],
         });
+      }
     }
   }
 }

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -57,6 +58,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
+  private authService = inject(AuthService);
 
   constructor(private fb: FormBuilder) {
     this.forgotPasswordForm = this.fb.group({
@@ -64,10 +66,14 @@ export class ForgotPasswordComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.forgotPasswordForm.valid) {
-      // TODO: Implement password reset logic
-      // console.log(this.forgotPasswordForm.value);
+      try {
+        const email = this.forgotPasswordForm.get('email')?.value;
+        await this.authService.resetPassword(email);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }
