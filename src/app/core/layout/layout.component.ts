@@ -4,10 +4,10 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
-  imports: [HeaderComponent,RouterOutlet],
+  imports: [HeaderComponent],
   template: `
     <app-header/>
-    <router-outlet/>
+    
   `,
   styles: ``
 })

@@ -16,7 +16,7 @@ export interface Form {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [MatCardModule,RouterModule,CommonModule,MatButtonModule,LayoutComponent]
+  imports: [MatCardModule, RouterModule, CommonModule, MatButtonModule, LayoutComponent]
 })
 export class DashboardComponent implements OnInit {
   forms$: Observable<Form[]>;
