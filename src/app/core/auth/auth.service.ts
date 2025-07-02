@@ -7,6 +7,7 @@ import {
   user,
   User as FirebaseUser,
   signOut,
+  onAuthStateChanged,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
@@ -26,11 +27,37 @@ export class AuthService {
     )
   );
 
-  constructor() {}
+  // Signal for reactive state management
+  public readonly isAuthenticated = signal<boolean>(false);
+  public readonly currentUser = signal<User | null>(null);
+
+  constructor() {
+    // Listen to auth state changes and handle routing
+    onAuthStateChanged(this.auth, (firebaseUser) => {
+      if (firebaseUser) {
+        const user = this.mapFirebaseUser(firebaseUser);
+        this.currentUser.set(user);
+        this.isAuthenticated.set(true);
+
+        // Redirect to dashboard if user is on login/register pages
+        const currentUrl = this.router.url;
+        if (
+          currentUrl === '/login' ||
+          currentUrl === '/register' ||
+          currentUrl === '/' ||
+          currentUrl === '/forgot-password'
+        ) {
+          this.router.navigate(['/dashboard']);
+        }
+      } else {
+        this.currentUser.set(null);
+        this.isAuthenticated.set(false);
+      }
+    });
+  }
 
   async signUp(email: string, password: string) {
     try {
-      
       const result = await createUserWithEmailAndPassword(
         this.auth,
         email,
@@ -58,6 +85,7 @@ export class AuthService {
   async signOut() {
     try {
       await signOut(this.auth);
+      this.router.navigate(['/login']);
     } catch (error) {
       throw error;
     }

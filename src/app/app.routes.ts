@@ -7,13 +7,15 @@ import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboa
 import { FormComponent } from './features/form/form.component';
 import { FormCreationComponent } from './features/form/pages/form-creation/form-creation.component';
 import { authGuard } from './core/auth/guards/auth.guard';
+import { redirectAuthenticatedGuard } from './core/auth/guards/redirect-authenticated.guard';
 
 export const routes: Routes = [
     {
         path: '',
         component: AuthComponent,
+        canActivate: [redirectAuthenticatedGuard],
         children: [
-            {path: '', redirectTo: 'login', pathMatch: 'full' },
+            {path: '', redirectTo: '/login', pathMatch: 'full' },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },

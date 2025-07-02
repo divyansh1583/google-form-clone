@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { Auth, signOut } from '@angular/fire/auth';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LayoutComponent } from '../../../../core/layout/layout.component';
 export interface Form {
   id: string;
   name: string;
@@ -16,12 +16,12 @@ export interface Form {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [MatCardModule,RouterModule,CommonModule,MatButtonModule]
+  imports: [MatCardModule,RouterModule,CommonModule,MatButtonModule,LayoutComponent]
 })
 export class DashboardComponent implements OnInit {
   forms$: Observable<Form[]>;
-  router=inject(Router);
-  private auth = inject(Auth);
+  router = inject(Router);
+  
   constructor() {
     this.forms$ = new Observable<Form[]>();
   }
@@ -39,14 +39,6 @@ export class DashboardComponent implements OnInit {
 
   navigateToForm(id: number) {
     this.router.navigate(['/forms/edit', id]);
-  }
-  
-  logout() {
-    signOut(this.auth).then(() => {
-      this.router.navigate(['/login']);
-    }).catch((error) => {
-      console.log(error);
-    });
   }
 }
 
