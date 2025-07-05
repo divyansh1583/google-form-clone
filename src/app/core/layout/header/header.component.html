@@ -1,0 +1,41 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over"> </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar>
+      <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Google Forms</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button aria-label="Theme toggle" (click)="toggleTheme()">
+        @if (isDarkTheme) {
+        <mat-icon>light_mode</mat-icon>
+        } @else {
+        <mat-icon>light_mode</mat-icon>
+        }
+      </button>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToForms(0)">
+          <mat-icon>article</mat-icon>
+          <span>Forms</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sign out</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+  </div>
+</mat-drawer-container>

@@ -9,16 +9,13 @@ height: 100%;
 }
 body{
   margin: 0;
-  font-family: 'Google Sans Text', sans-serif;
+  // font-family: 'Google Sans Text', sans-serif;
 }
 /* Theme configuration */
 html {
   color-scheme: light;
   @include mat.theme((
-    color: (
-      primary: custom-palette.$primary-palette,
-      tertiary: custom-palette.$tertiary-palette
-    ),
+    color: mat.$violet-palette,
     typography: Roboto,
     density: 0
   ));
@@ -29,8 +26,13 @@ html {
   color-scheme: dark;
 }
 
-
-/* Make all Material icons use outlined style by default */
-.mat-icon {
-  font-family: 'Material Icons Outlined' !important;
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-on-primary-container),
+  ));
+  @include mat.sidenav-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-on-primary-container),
+  ));
 }

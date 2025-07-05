@@ -10,6 +10,7 @@ import { authGuard } from './core/auth/guards/auth.guard';
 import { redirectAuthenticatedGuard } from './core/auth/guards/redirect-authenticated.guard';
 
 export const routes: Routes = [
+    {path: '', redirectTo: '/login', pathMatch: 'full' },
     {
         path: '',
         component: AuthComponent,
