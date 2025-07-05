@@ -37,7 +37,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  async onLogin() {
+  async onSubmit() {
     if (this.loginForm.valid) {
       try {
         const { email, password } = this.loginForm.value;
@@ -52,4 +52,5 @@ export class LoginComponent {
       }
     }
   }
+
 }
