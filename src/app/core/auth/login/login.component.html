@@ -3,44 +3,59 @@
     <mat-card-title>Login</mat-card-title>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Enter your email" formControlName="email">
+        <input
+          matInput
+          placeholder="Enter your email"
+          formControlName="email"
+        />
+        <mat-icon matSuffix>mail</mat-icon>
         @if (loginForm.get('email')?.hasError('required')) {
-          <mat-error>
-            Email is required
-          </mat-error>
-        }
-        @if (loginForm.get('email')?.hasError('email')) {
-          <mat-error>
-            Enter a valid email
-          </mat-error>
+          <mat-error> Email is required </mat-error>
+        } @if (loginForm.get('email')?.hasError('email')) {
+          <mat-error> Enter a valid email </mat-error>
         }
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="full-width">
+      
+      <mat-form-field class="full-width" subscriptSizing="fixed">
         <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Enter your password" formControlName="password">
+        <input
+        matInput
+        [type]="hide() ? 'password' : 'text'"
+        placeholder="Enter your password"
+          formControlName="password"
+          />
+          <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+          >
+          <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-hint></mat-hint>
         @if (loginForm.get('password')?.hasError('required')) {
-          <mat-error>
-            Password is required
-          </mat-error>
-        }
-        @if (loginForm.get('password')?.hasError('minlength')) {
-          <mat-error>
-            Minimum 6 characters
-          </mat-error>
+        <mat-error> Password is required </mat-error>
+        } @if (loginForm.get('password')?.hasError('minlength')) {
+        <mat-error> Minimum 6 characters </mat-error>
         }
       </mat-form-field>
-
-      <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="loginForm.invalid">
+      <button
+      mat-raised-button
+      color="primary"
+        class="full-width"
+        type="submit"
+        [disabled]="loginForm.invalid"
+        >
         Login
       </button>
+      <div class="text-center">
+        <button class="link-buttons" mat-button="filled" routerLink="/forgot-password">Forgot Password?</button>
+        <span> | </span>
+        <button class="link-buttons" mat-button="filled" routerLink="/register">SignUp</button>
+      </div>
     </form>
-    <div class="links">
-            <a class="link" routerLink="/forgot-password">Forgot password?</a>
-            <span> | </span>
-            <a class="link" routerLink="/register">Sign up</a>
-          </div>
   </mat-card>
 </div>

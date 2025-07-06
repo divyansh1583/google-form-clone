@@ -14,7 +14,7 @@ export const routes: Routes = [
     {
         path: '',
         component: AuthComponent,
-        canActivate: [redirectAuthenticatedGuard],
+        // canActivate: [redirectAuthenticatedGuard],
         children: [
             {path: '', redirectTo: '/login', pathMatch: 'full' },
             { path: 'login', component: LoginComponent },
@@ -25,7 +25,7 @@ export const routes: Routes = [
     { 
         path: 'dashboard', 
         loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
-        canActivate: [authGuard]
+        // canActivate: [authGuard]
     },
     {
         path: 'forms', 

@@ -1,17 +1,19 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,7 +23,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    RouterLink,
+    MatGridListModule,
+    MatIconModule,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -31,11 +35,18 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+  
+  hide = signal(true);
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
 
   async onSubmit() {
     if (this.loginForm.valid) {
