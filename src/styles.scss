@@ -18,8 +18,7 @@ html {
   color-scheme: light;
   @include mat.theme((
     color: mat.$magenta-palette,
-    typography: Roboto,
-    density: 0
+    typography: Roboto
   ));
 }
 
@@ -38,3 +37,5 @@ html {
     container-text-color: var(--mat-sys-on-primary-container),
   ));
 }
+
+@include mat.form-field-density(-3);
