@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 @Component({
   selector: 'app-header',
@@ -20,7 +20,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     MatDividerModule,
     CommonModule,
-    MatSidenavModule, MatButtonModule
+    MatSidenavModule, 
+    MatButtonModule,
+    RouterModule
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

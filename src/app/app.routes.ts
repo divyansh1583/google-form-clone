@@ -1,20 +1,19 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './core/auth/auth.component';
 import { ForgotPasswordComponent } from './core/auth/forgot-password/forgot-password.component';
+import { authGuard } from './core/auth/guards/auth.guard';
 import { LoginComponent } from './core/auth/login/login.component';
 import { RegisterComponent } from './core/auth/register/register.component';
-import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboard.component';
 import { FormComponent } from './features/form/form.component';
 import { FormCreationComponent } from './features/form/pages/form-creation/form-creation.component';
-import { authGuard } from './core/auth/guards/auth.guard';
+import { LayoutComponent } from './core/layout/layout.component';
 import { redirectAuthenticatedGuard } from './core/auth/guards/redirect-authenticated.guard';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/login', pathMatch: 'full' },
     {
         path: '',
         component: AuthComponent,
-        // canActivate: [redirectAuthenticatedGuard],
+        canActivate: [redirectAuthenticatedGuard],
         children: [
             {path: '', redirectTo: '/login', pathMatch: 'full' },
             { path: 'login', component: LoginComponent },
@@ -24,8 +23,13 @@ export const routes: Routes = [
     },
     { 
         path: 'dashboard', 
-        loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
-        // canActivate: [authGuard]
+        component:LayoutComponent,
+        //loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        children:[
+            {path: '', loadComponent: () => import('./features/dashboard/pages/dashboard/dashboard.component').then(m => m.DashboardComponent) },
+
+        ],
+        canActivate: [authGuard]
     },
     {
         path: 'forms', 
