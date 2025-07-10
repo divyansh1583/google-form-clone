@@ -15,7 +15,7 @@ body{
 }
 /* Theme configuration */
 html {
-  color-scheme: light dark;
+  color-scheme: dark;
   @include mat.theme((
     color: mat.$magenta-palette,
     typography: Roboto
@@ -25,6 +25,10 @@ html {
 /* Dark mode */
 .dark-mode {
   color-scheme: dark;
+}
+
+.light-mode{
+  color-scheme: light;
 }
 
 :root {
