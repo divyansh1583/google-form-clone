@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  height: calc(100vh - 64px); 
+  height: calc(100vh - 64px);
   @include mat.card-overrides(
     (
       subtitle-text-color: black,

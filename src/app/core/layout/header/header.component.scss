@@ -6,7 +6,27 @@
   height: 100%;
   width: 100%;
 }
+
 .example-sidenav {
   width: 280px;
+}
+
+.example-sidenav-content {
+  position: relative;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.main-content {
+  padding-top: 64px; /* Standard toolbar height */
+  min-height: calc(100vh - 64px);
 }
 
