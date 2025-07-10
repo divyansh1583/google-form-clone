@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { ActivatedRoute } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { HeaderComponent } from '../../components/header/header.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule } from '@angular/forms';
-import { FormTitleInputComponent } from '../../components/form-title-input/form-title-input.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form-creation',
@@ -27,8 +25,7 @@ import { FormTitleInputComponent } from '../../components/form-title-input/form-
     MatSelectModule,
     MatRadioModule,
     MatSlideToggleModule,
-    FormsModule,
-    FormTitleInputComponent
+    FormsModule
   ],
   templateUrl: './form-creation.component.html',
   styleUrls: ['./form-creation.component.scss'],
