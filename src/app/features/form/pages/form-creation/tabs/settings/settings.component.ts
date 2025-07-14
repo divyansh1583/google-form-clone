@@ -3,11 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-settings',
   imports: [],
-  template: ` <p>settings works!</p> `,
-  styles: ``,
+  templateUrl: './settings.component.html',
+  styleUrl: './settings.component.scss'
 })
 export class SettingsComponent {
-  ngOnInit(): void {
-    // console.log('settings component initialized');
-  }
+
 }

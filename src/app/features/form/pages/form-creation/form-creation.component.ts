@@ -11,6 +11,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute } from '@angular/router';
+import { QuestionsComponent } from "./tabs/questions/questions.component";
+import { ResponsesComponent } from "./tabs/responses/responses.component";
+import { SettingsComponent } from "./tabs/settings/settings.component";
 
 @Component({
   selector: 'app-form-creation',
@@ -25,8 +28,11 @@ import { ActivatedRoute } from '@angular/router';
     MatSelectModule,
     MatRadioModule,
     MatSlideToggleModule,
-    FormsModule
-  ],
+    FormsModule,
+    QuestionsComponent,
+    ResponsesComponent,
+    SettingsComponent
+],
   templateUrl: './form-creation.component.html',
   styleUrls: ['./form-creation.component.scss'],
   standalone: true
